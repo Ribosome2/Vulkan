@@ -5,6 +5,7 @@ A comprehensive collection of open source C++ examples for [Vulkan®](https://ww
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BHXPMV6ZKPH9E)
 
 ## Table of Contents
+
 + [Official Khronos Vulkan Samples](#official-khronos-vulkan-samples)
 + [Cloning](#Cloning)
 + [Assets](#Assets)
@@ -13,21 +14,21 @@ A comprehensive collection of open source C++ examples for [Vulkan®](https://ww
 + [Shaders](#Shaders)
 + [A note on synchronization](#a-note-on-synchronization)
 + [Examples](#Examples)
-    + [Basics](#Basics)
-    + [glTF](#glTF)
-    + [Advanced](#Advanced)
-    + [Performance](#Performance)
-    + [Physically Based Rendering](#physically-based-rendering)
-    + [Deferred](#Deferred)
-    + [Compute Shader](#compute-shader)
-    + [Geometry Shader](#geometry-shader)
-    + [Tessellation Shader](#tessellation-shader)
-    + [Hardware accelerated ray tracing](#hardware-accelerated-ray-tracing)
-    + [Headless](#Headless)
-    + [User Interface](#user-interface)
-    + [Effects](#Effects)
-    + [Extensions](#Extensions)
-    + [Misc](#Misc)
+  + [Basics](#Basics)
+  + [glTF](#glTF)
+  + [Advanced](#Advanced)
+  + [Performance](#Performance)
+  + [Physically Based Rendering](#physically-based-rendering)
+  + [Deferred](#Deferred)
+  + [Compute Shader](#compute-shader)
+  + [Geometry Shader](#geometry-shader)
+  + [Tessellation Shader](#tessellation-shader)
+  + [Hardware accelerated ray tracing](#hardware-accelerated-ray-tracing)
+  + [Headless](#Headless)
+  + [User Interface](#user-interface)
+  + [Effects](#Effects)
+  + [Extensions](#Extensions)
+  + [Misc](#Misc)
 + [Credits and Attributions](#credits-and-attributions)
 
 ## Official Khronos Vulkan Samples
@@ -39,6 +40,7 @@ You can find this repository at https://github.com/KhronosGroup/Vulkan-Samples
 As I've been involved with getting the official repository up and running, I'll be mostly contributing to that repository from now, but may still add samples that don't fit there in here and I'll of course continue to maintain these samples.
 
 ## Cloning
+
 This repository contains submodules for external dependencies, so when doing a fresh clone you need to clone recursively:
 
 ```
@@ -53,10 +55,10 @@ git submodule update
 ```
 
 ## Assets
+
 Many examples require assets from the asset pack that is not part of this repository due to file size. A python script is included to download the asset pack that. Run
 
-    python download_assets.py
-
+python download_assets.py
 from the root of the repository after cloning or see [this](data/README.md) for manual download.
 
 ## Building
@@ -68,6 +70,7 @@ See [BUILD.md](BUILD.md) for details on how to build for the different platforms
 ## Running
 
 Once built, examples can be run from the bin directory. The list of available command line options can be brought up with `--help`:
+
 ```
  -v, --validation: Enable validation layers
  -br, --benchruntime: Set duration time for benchmark mode in seconds
@@ -84,7 +87,6 @@ Once built, examples can be run from the bin directory. The list of available co
  -gl, --listgpus: Display a list of available Vulkan devices
  -bw, --benchwarmup: Set warmup time for benchmark mode in seconds
 ```
-
 Note that some examples require specific device features, and if you are on a multi-gpu system you might need to use the `-gl` and `-g` to select a gpu that supports them.
 
 ## Shaders
@@ -95,12 +97,12 @@ Vulkan consumes shaders in an intermediate representation called SPIR-V. This ma
 
 Synchronization in the master branch currently isn't optimal und uses ```vkDeviceQueueWaitIdle``` at the end of each frame. This is a heavy operation and is suboptimal in regards to having CPU and GPU operations run in parallel. I'm currently reworking this in the [this branch](https://github.com/SaschaWillems/Vulkan/tree/proper_sync_dynamic_cb). While still work-in-progress, if you're interested in a more proper way of synchronization in Vulkan, please take a look at that branch.
 
-
 ## Examples
 
 ### Basics
 
 #### [First triangle](examples/triangle/)
+
 Basic and verbose example for getting a colored triangle rendered to the screen using Vulkan. This is meant as a starting point for learning Vulkan from the ground up. A huge part of the code is boilerplate that is abstracted away in later examples.
 
 #### [Pipelines](examples/pipelines/)
@@ -162,7 +164,6 @@ Implements a simple CPU based particle system. Particle data is stored in host m
 #### [Stencil buffer](examples/stencilbuffer/)
 
 Uses the stencil buffer and its compare functionality for rendering a 3D model with dynamic outlines.
-
 
 #### [Vertex attributes](examples/vertexattributes/)
 
@@ -428,7 +429,7 @@ Shows how to render a scene using a negative viewport height, making the Vulkan 
 
 Uses a special image that contains variable shading rates to vary the number of fragment shader invocations across the framebuffer. This makes it possible to lower fragment shader invocations for less important/less noisy parts of the framebuffer.
 
-#### [Descriptor indexing (VK_EXT_descriptor_indexing)](examples/descriptorindexing/)  
+#### [Descriptor indexing (VK_EXT_descriptor_indexing)](examples/descriptorindexing/)
 
 Demonstrates the use of VK_EXT_descriptor_indexing for creating descriptor sets with a variable size that can be dynamically indexed in a shader using `GL_EXT_nonuniform_qualifier` and `SPV_EXT_descriptor_indexing`.
 
@@ -447,4 +448,5 @@ Vulkan interpretation of glxgears. Procedurally generates and animates multiple 
 Renders a Vulkan demo scene with logos and mascots. Not an actual example but more of a playground and showcase.
 
 ## Credits and Attributions
+
 See [CREDITS.md](CREDITS.md) for additional credits and attributions.
