@@ -190,7 +190,9 @@ public:
 		}
 		if (usage & VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT)
 		{
-			aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT | VK_IMAGE_ASPECT_STENCIL_BIT;
+			aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT;
+			if (format >= VK_FORMAT_D16_UNORM_S8_UINT)
+				aspectMask |=VK_IMAGE_ASPECT_STENCIL_BIT;
 			imageLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
 		}
 
@@ -746,7 +748,7 @@ public:
 		// rendering to be finished before we can use the framebuffer
 		// color image for sampling during final rendering
 		// To ensure this we use a dedicated offscreen synchronization
-		// semaphore that will be signaled when offscreen renderin
+		// semaphore that will be signaled when offscreen rendering
 		// has been finished
 		// This is necessary as an implementation may start both
 		// command buffers at the same time, there is no guarantee
@@ -807,6 +809,11 @@ public:
 		{
 			updateUniformBufferOffscreen();	
 		}
+	}
+
+	virtual void viewChanged()
+	{
+		updateUniformBufferOffscreen();
 	}
 
 	virtual void OnUpdateUIOverlay(vks::UIOverlay *overlay)
