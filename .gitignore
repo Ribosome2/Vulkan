@@ -237,3 +237,4 @@ data/roboto*.*
 .idea
 cmake-build-debug
 cmake-build-debug-visual-studio
+imgui.ini
